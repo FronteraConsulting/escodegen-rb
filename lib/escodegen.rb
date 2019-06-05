@@ -1,7 +1,8 @@
 # encoding: UTF-8
 
 require 'execjs'
-require 'commonjs'
+#require 'commonjs'
+require 'commonjs-mini_racer_env'
 
 require 'escodegen/generator'
 
@@ -13,7 +14,7 @@ module Escodegen
 
     def new_environment
       context = new_context
-      env = CommonJS::Environment.new(context, :path => Escodegen.load_path)
+      env = CommonJS::MiniRacerEnv.new(context, :path => Escodegen.load_path)
       env.require("escodegen")
     end
 
